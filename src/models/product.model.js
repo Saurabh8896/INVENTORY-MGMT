@@ -1,83 +1,67 @@
-export default class ProductModel{
-
-    constructor(_id,_name,_desc,_price,_imageUrl){
-        this.id = _id
-        this.name = _name
-        this.desc = _desc
-        this.price = _price
-        this.imageUrl = _imageUrl
+export default class ProductModel {
+    constructor(id, name, desc, price, imageUrl) {
+      this.id = id;
+      this.name = name;
+      this.desc = desc;
+      this.price = price;
+      this.imageUrl = imageUrl;
     }
-
-        static get(){
-       return products
-        }
-
-        static delete(id){
-            const index = products.findIndex(p=>p.id == id)
-
-            products.splice(index,1)
-        }
-
-        static update(productobj){
-           const index =  products.findIndex((p)=>p.id ==productobj.id);
-           console.log(index)
-            products[index] = productobj
-        }
-
-        static add(name,desc,price,imageUrl){
-            let newproduct = new ProductModel(
-                products.length+1,
-                name,
-                desc,
-                price,
-                imageUrl
-            )
-
-            products.push(newproduct)
-        }
-
-        static getById(id){
-           return products.find((p)=> p.id==id);
-        }
-}
-
-
-var products = [
+  
+    static getAll() {
+      return products;
+    }
+  
+    static update(productObj) {
+      const index = products.findIndex(
+        (p) => p.id == productObj.id
+      );
+      products[index] = productObj;
+    }
+  
+    static delete(id) {
+      const index = products.findIndex(
+        (p) => p.id == id
+      );
+      products.splice(index, 1);
+    }
+  
+    static add(name, desc, price, imageUrl) {
+      let newProduct = new ProductModel(
+        products.length + 1,
+        name,
+        desc,
+        price,
+        imageUrl
+      );
+      products.push(newProduct);
+    }
+  
+    static getById(id) {
+      return products.find((p) => p.id == id);
+    }
+  }
+  
+  var products = [
     new ProductModel(
-        1,
-        "Wireless Earbuds",
-        "High-quality sound with noise cancellation.",
-        59.99,
-        "https://images.pexels.com/photos/7156882/pexels-photo-7156882.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+      1,
+      'Product 1',
+      'Description for Product 10',
+      19.99,
+      'https://m.media-amazon.com/images/I/51-nXsSRfZL._SX328_BO1,204,203,200_.jpg'
     ),
     new ProductModel(
-        2,
-        "Smartwatch",
-        "A stylish smartwatch with fitness tracking features.",
-        129.99,
-        "https://images.pexels.com/photos/267394/pexels-photo-267394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+      2,
+      'Product 2',
+      'Description for Product 2',
+      29.99,
+      'https://m.media-amazon.com/images/I/51xwGSNX-EL._SX356_BO1,204,203,200_.jpg'
     ),
     new ProductModel(
-        3,
-        "Gaming Mouse",
-        "Ergonomic gaming mouse with customizable RGB lighting.",
-        39.99,
-        "https://images.pexels.com/photos/6829331/pexels-photo-6829331.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+      3,
+      'Product 3',
+      'Description for Product 3',
+      39.99,
+      'https://m.media-amazon.com/images/I/31PBdo581fL._SX317_BO1,204,203,200_.jpg'
     ),
-    new ProductModel(
-        4,
-        "Bluetooth Speaker",
-        "Portable Bluetooth speaker with deep bass.",
-        89.99,
-        "https://images.pexels.com/photos/3394660/pexels-photo-3394660.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-    ),
-    new ProductModel(
-        5,
-        "4K Monitor",
-        "Ultra HD 4K monitor with vibrant colors and sharp detail.",
-        399.99,
-        "https://images.pexels.com/photos/1576910/pexels-photo-1576910.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-    )
-];
-
-
+  ];
+  
