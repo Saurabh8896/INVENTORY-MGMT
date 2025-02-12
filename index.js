@@ -1,4 +1,5 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import ProductsController from './src/controllers/product.controller.js';
 import UserController from './src/controllers/user.controller.js';
 import ejsLayouts from 'express-ejs-layouts';
@@ -7,9 +8,12 @@ import validationMiddleware from './middlewares/validation.middleware.js';
 import { uploadFile } from './middlewares/file-upload.middleware.js';
 import session from 'express-session';
 import {auth} from './middlewares/auth.middleware.js'
+import { setLastVisit } from './middlewares/lastVisit.midddleware.js';
 const app = express();
 
 app.use(express.static('public'));
+app.use(cookieParser())
+app.use(setLastVisit);
 app.use(session({
   secret:'SecretKey',
   resave: false,
